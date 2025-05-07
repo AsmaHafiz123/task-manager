@@ -1,0 +1,10 @@
+Reflection on Task Manager Application
+
+The Task Manager application was inspired by the need for a simple yet scalable tool to manage daily tasks, a common requirement in both personal and professional settings. I chose a microservices architecture to explore Docker's capabilities in handling distributed systems, incorporating creativity by scaling the API service to simulate load balancing. This allowed me to experiment with Docker's scaling features and understand how multiple instances can improve availability.
+
+One major challenge was managing port conflicts while scaling the API service. Initially, Docker threw "port already allocated" errors, which I resolved by removing external port mappings and relying on Docker's internal networking. Another challenge was testing the API without direct access to localhost, which I addressed by executing requests from inside the container. These hurdles taught me the importance of Docker networking and container communication.
+
+Docker's features significantly simplified the development process. Custom networks (app-network) ensured seamless communication between the API and MongoDB, while volumes (db-data) enabled data persistence across container restarts. Multi-stage builds in the Dockerfile optimized the API image size, making it efficient for deployment.
+
+In a production environment, this application could be extended by adding a load balancer like Nginx to distribute traffic across API instances effectively. Additionally, integrating a CI/CD pipeline for automated deployments and monitoring tools to track service health would enhance reliability and scalability for real-world use.
+
