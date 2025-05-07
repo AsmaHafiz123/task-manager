@@ -1,0 +1,27 @@
+services:
+  api:
+    image: asma461/task-manager-api:latest
+    networks:
+      - app-network
+    depends_on:
+      - mongodb
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/tasks"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+  mongodb:
+    image: asma461/task-manager-mongodb:latest
+    volumes:
+      - db-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+volumes:
+  db-data:
+networks:
+  app-network:

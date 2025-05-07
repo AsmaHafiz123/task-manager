@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Connect to MongoDB (use container name as hostname)
-client = MongoClient(os.getenv("MONGO_URI", "mongodb://db-container:27017"))
+client = MongoClient(os.getenv("MONGO_URI", "mongodb://admin:secret@mongodb:27017"))
 db = client.taskdb
 tasks = db.tasks
 
